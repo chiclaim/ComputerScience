@@ -15,6 +15,7 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     
+    // 虚数测试
     complexCalculator cal;
     complex c1(2,4);
     complex c2(2,8);
@@ -30,6 +31,7 @@ int main(int argc, const char * argv[]) {
     cout << c3 << endl;
     
     
+    // 实数测试
     numberCalculator cal2;
     double x = 10;
     double y = 2;
