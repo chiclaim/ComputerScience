@@ -130,11 +130,24 @@ void yordan(){
 
 int main() {
     
-    intputArr();
-
-    printArr();
+    string flag = "";
     
-    yordan();
+    while(1) {
+    
+        intputArr();
+
+        printArr();
+        
+        yordan();
+        
+        cout << "是否继续解方程组（y/n）：";
+        cin >> flag;
+        
+        if(flag == "n"){
+            break;
+        }
+        
+    }
     
     return 0;
 }
