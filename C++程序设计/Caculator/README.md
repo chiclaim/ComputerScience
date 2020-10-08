@@ -4,24 +4,35 @@
 
 ## 代码设计
 
-在进行代码实现之前，对功能需求做一个简单的分析：
+实现简单计算器程序的时候，
+- 将4则运算运算封装在 calculator 基类中，因为实数和虚数都有4则运算，将共性放在基类中，将个性放在派生类中。
+- 在 calculator 中不能将参与的计算的数据类型硬编码 ，因为参与计算的可能是 double 类型，也可能是 complex，通过 C++ 类模板技术达到尽可能的复用代码，减少重复代码，提高程序的可维护性，将来为新的数据类型提供四则运算更加方便灵活，扩展性更好。
 
-- 不管是实数的运算还是复数的四则运算，都有  `+、 -、 *、 /` ，我们可以将共性的东西进行抽象
-- 我们可以使用 C++ 中的模板类（泛型编程）实现上面的抽象，做到数据的无关性，后面可以方便的扩展更多的数据可以进行 `+、 -、 *、 /` 
-- 实数的四则运算 C++ 编译器已经帮我们实现了，需要对复数进行操作符重载，才能使用上面的抽象
+另一方面，我也将参与计算的数据设计为函数的参数，而不是类成员属性，
+- 在并发程序中更容易发生线程安全问题，通过将数据作为函数参数（局部变量）则不会出现该问题；
+- 在参与计算的数据的个数也是不确定的，有的计算只需要一个数据， 比如开方，所以为类成员属性可能会存在成员冗余；
+- 每次计算用户关心的是计算结果，计算也是一次性的，参与计算的数据，无需保存在对象中，应该随计算结束而消亡，当然在我们这个小程序中，内存占用可以忽略不计。
 
 
 将四则运算抽象到  `calculator.h`  头文件中，里面定义了一个抽象类（接口）：
 
 ```
 template <typename T>
-class calculator {
+class calculator{
 
-public :
-    virtual T add(T x,T y) = 0; //加
-    virtual T subtract(T x,T y) = 0; //减
-    virtual T multiply(T x,T y)= 0; //乘
-    virtual T divide(T x,T y)= 0; //除
+  public :
+    T add(T x,T y){ //加
+        return x + y;
+    }
+    T subtract(T x,T y){ //减
+        return x - y;
+    }
+    T multiply(T x,T y){ //乘
+        return x * y;
+    }
+    T divide(T x,T y){ //除
+        return x / y;
+    }
 };
 ```
 
@@ -38,10 +49,6 @@ public :
 class numberCalculator : public calculator<double> {
 
 public :
-    double add(double x,double y);
-    double subtract(double x,double y);
-    double multiply(double x,double y);
-    double divide(double x,double y);
     double mypow(double x,double y);
     double mysqrt(double x);
 };
@@ -52,27 +59,7 @@ public :
 
 ```
 #include <math.h>
-#include <iostream>
 #include "headers/numberCalculator.h"
-
-double numberCalculator::add(double x,double y){
-    return x+y;
-}
-
-double numberCalculator::subtract(double x, double y){
-    return x-y;
-}
-
-double numberCalculator::multiply(double x, double y){
-    return x*y;
-}
-
-double numberCalculator::divide(double x, double y){
-    if(y == 0) {
-        throw std::runtime_error("division is zero");
-    }
-    return x/y;
-}
 
 double numberCalculator::mypow(double x, double y){
     return pow(x, y);
@@ -134,8 +121,8 @@ complex complex::operator-(complex& other){
     return complex(real - other.real, image - other.image);
 }
 complex complex::operator*(complex& other){
-    // (a+bi) * (c+di)  = (ac - bd)+(bc-ad)i
-    return complex(real*other.real - image * other.image, image * other.real-real * other.image);
+    // (a+bi) * (c+di)  = (ac - bd)+(bc+ad)i
+    return complex(real*other.real - image * other.image, image * other.real+real * other.image);
 }
 complex complex::operator/(complex& other){
     // (a+bi) / (c+di)  = ((ac+bd)/c^2+d^2) + ((bc-ad)/(c^2+d^2))i
@@ -160,7 +147,7 @@ istream& operator>>(istream &stream, complex &c){
 
 ```
 int main(int argc, const char * argv[]) {
-    complexCalculator cal;
+    calculator<complex> cal;
     complex c1(2,4);
     complex c2(2,8);
     cout<< cal.add(c1, c2)<<endl;

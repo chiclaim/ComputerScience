@@ -30,8 +30,8 @@ complex complex::operator-(const complex& other){
     return complex(real - other.real, image - other.image);
 }
 complex complex::operator*(const complex& other){
-    // (a+bi) * (c+di)  = (ac - bd)+(bc-ad)i
-    return complex(real*other.real - image * other.image, image * other.real-real * other.image);
+    // (a+bi) * (c+di)  = (ac - bd)+(bc+ad)i
+    return complex(real*other.real - image * other.image, image * other.real+real * other.image);
 }
 complex complex::operator/(const complex& other){
     // (a+bi) / (c+di)  = ((ac+bd)/c^2+d^2) + ((bc-ad)/(c^2+d^2))i

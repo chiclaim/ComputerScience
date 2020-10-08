@@ -44,9 +44,9 @@ void inputNumbers(double *x, double *y){
 }
 
 void inputComplexes(complex &c1,complex &c2){
-    cout << "请输入第第一个虚数:" << endl;
+    cout << "请输入第一个虚数:" << endl;
     cin >> c1;
-    cout << "请输入第第二个虚数:" << endl;
+    cout << "请输入第二个虚数:" << endl;
     cin >> c2;
 }
 
@@ -90,7 +90,7 @@ firstLoop:while(1){
                         break;
                     case 2:
                         inputNumbers(&x,&y);
-                        cout << cal.subtract(x, y) << endl;
+                        cout << "计算结果：" << cal.subtract(x, y) << endl;
                         break;
                     case 3:
                         inputNumbers(&x,&y);
