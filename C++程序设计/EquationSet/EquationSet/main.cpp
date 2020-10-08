@@ -21,13 +21,18 @@ void initAlphabet(){
     }
 }
 
-void intputArr(){
+int intputArr(){
     
     
     string delimiter = ",";
     
     cout << "请输入方程组个数：";
     cin >> n;
+    
+    if(n <= 1 || n >= 100){
+        cout << "方程组个数必须大于 1,小于 100" << endl;
+        return -1;
+    }
     
     string inputline;// = "1,2,3,4,5";;
     
@@ -53,6 +58,7 @@ void intputArr(){
             continue;
         }
     }
+    return 1;
 }
 
 void printArr(){
@@ -134,7 +140,9 @@ int main() {
     
     while(1) {
     
-        intputArr();
+        if(intputArr() < 0){
+            continue;
+        }
 
         printArr();
         
