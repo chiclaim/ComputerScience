@@ -50,3 +50,4 @@ istream& operator>>(istream &stream, complex &c){
     stream >> c.real >> c.image;
     return stream;
 }
+//... 由于篇幅原因，省略其他操作符重载

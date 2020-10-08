@@ -7,7 +7,7 @@
 #include<algorithm>
 #include <iostream>
 #include <iomanip>
-
+#include <complex.h>
 using namespace std;
 int n, m, js, jl, jk, maxnum, maxline, flag=0;
 double a[110][110], multi, ans[110], num;

@@ -8,6 +8,8 @@
 #include "headers/complexCalculator.h"
 #include <math.h>
 
+// 本类可以省略...已经在calculator中实现了
+
 complex complexCalculator::add(complex x,complex y){
     return x+y;
 }

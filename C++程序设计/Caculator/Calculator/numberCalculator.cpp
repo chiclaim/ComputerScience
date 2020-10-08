@@ -9,25 +9,6 @@
 #include <iostream>
 #include "headers/numberCalculator.h"
 
-double numberCalculator::add(double x,double y){
-    return x+y;
-}
-
-double numberCalculator::subtract(double x, double y){
-    return x-y;
-}
-
-double numberCalculator::multiply(double x, double y){
-    return x*y;
-}
-
-double numberCalculator::divide(double x, double y){
-    if(y == 0) {
-        throw std::runtime_error("division is zero");
-    }
-    return x/y;
-}
-
 double numberCalculator::mypow(double x, double y){
     return pow(x, y);
 }

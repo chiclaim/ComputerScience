@@ -28,8 +28,6 @@ public:
     complex operator/(const complex& other);
     friend ostream& operator<<(ostream &os, const complex& c);
     friend istream& operator>>(istream &os, complex& c);
-    
-    
 };
 
 #endif /* complex_h */

@@ -119,7 +119,8 @@ firstLoop:while(1){
             } else if(flag == 2){
                 cout << "请选择虚数运算符：" << endl;
                 cin >> operate;
-                complexCalculator cal;
+                //complexCalculator cal;
+                calculator<complex> cal;
                 complex c1, c2;
                 switch (operate) {
                     case 0:
@@ -170,6 +171,7 @@ firstLoop:while(1){
 void hardCodeTest(){
     // 虚数测试
     complexCalculator cal;
+    //calculator<complex> cal;
     complex c1(2,4);
     complex c2(2,8);
     cout<< cal.add(c1, c2)<<endl;
@@ -178,10 +180,12 @@ void hardCodeTest(){
     cout<< cal.divide(c1, c2)<<endl;
     
     
+    
+    
     // 测试重载 >> 操作符
-    complex c3;
-    cin >> c3;
-    cout << c3 << endl;
+    //complex c3;
+    //cin >> c3;
+    //cout << c3 << endl;
     
     
     // 实数测试
