@@ -36,6 +36,20 @@ void menu(int type=1){
     cout << "------------------------------------" << endl;
 }
 
+void inputNumbers(double *x, double *y){
+    cout << "请输入第一个数:" << endl;
+    cin >> *x;
+    cout << "请输入第二个数:" << endl;
+    cin >> *y;
+}
+
+void inputComplexes(complex &c1,complex &c2){
+    cout << "请输入第第一个虚数:" << endl;
+    cin >> c1;
+    cout << "请输入第第二个虚数:" << endl;
+    cin >> c2;
+}
+
 void calculate(){
     
     int flag = 1;
@@ -71,38 +85,23 @@ firstLoop:while(1){
                         goto firstLoop;
                         break;
                     case 1:
-                        cout << "请输入第一个数:" << endl;
-                        cin >> x;
-                        cout << "请输入第二个数:" << endl;
-                        cin >> y;
+                        inputNumbers(&x,&y);
                         cout << "计算结果：" << cal.add(x, y) << endl << endl;
                         break;
                     case 2:
-                        cout << "请输入第一个数:" << endl;
-                        cin >> x;
-                        cout << "请输入第二个数:" << endl;
-                        cin >> y;
+                        inputNumbers(&x,&y);
                         cout << cal.subtract(x, y) << endl;
                         break;
                     case 3:
-                        cout << "请输入第一个数:" << endl;
-                        cin >> x;
-                        cout << "请输入第二个数:" << endl;
-                        cin >> y;
+                        inputNumbers(&x,&y);
                         cout << "计算结果：" << cal.multiply(x, y) << endl << endl;
                         break;
                     case 4:
-                        cout << "请输入第一个数:" << endl;
-                        cin >> x;
-                        cout << "请输入第二个数:" << endl;
-                        cin >> y;
+                        inputNumbers(&x,&y);
                         cout << "计算结果：" << cal.divide(x, y) << endl << endl;
                         break;
                     case 5:
-                        cout << "请输入第一个数:" << endl;
-                        cin >> x;
-                        cout << "请输入第二个数:" << endl;
-                        cin >> y;
+                        inputNumbers(&x,&y);
                         cout << "计算结果："  << cal.mypow(x, y) << endl << endl;
                         break;
                     case 6:
@@ -127,31 +126,19 @@ firstLoop:while(1){
                         goto firstLoop;
                         break;
                     case 1:
-                        cout << "请输入第第一个虚数:" << endl;
-                        cin >> c1;
-                        cout << "请输入第第二个虚数:" << endl;
-                        cin >> c2;
+                        inputComplexes(c1,c2);
                         cout << "计算结果：" << cal.add(c1,c2) << endl << endl;
                         break;
                     case 2:
-                        cout << "请输入第第一个虚数:" << endl;
-                        cin >> c1;
-                        cout << "请输入第第二个虚数:" << endl;
-                        cin >> c2;
+                        inputComplexes(c1,c2);
                         cout << "计算结果：" << cal.subtract(c1,c2) << endl << endl;
                         break;
                     case 3:
-                        cout << "请输入第第一个虚数:" << endl;
-                        cin >> c1;
-                        cout << "请输入第第二个虚数:" << endl;
-                        cin >> c2;
+                        inputComplexes(c1,c2);
                         cout << "计算结果：" << cal.multiply(c1,c2) << endl << endl;
                         break;
                     case 4:
-                        cout << "请输入第第一个虚数:" << endl;
-                        cin >> c1;
-                        cout << "请输入第第二个虚数:" << endl;
-                        cin >> c2;
+                        inputComplexes(c1,c2);
                         cout << "计算结果：" << cal.divide(c1,c2) << endl << endl;
                         break;
                     default:
