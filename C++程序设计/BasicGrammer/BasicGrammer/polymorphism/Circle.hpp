@@ -18,6 +18,7 @@ class Circle: public Point{
     public :
         Circle(double a,double b,double r);
         double area();
+        ~Circle();
     
 };
 #endif /* Circle_hpp */

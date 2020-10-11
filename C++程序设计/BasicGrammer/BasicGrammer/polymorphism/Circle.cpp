@@ -7,6 +7,7 @@
 //
 
 #include "Circle.hpp"
+#include <iostream>
 
 Circle::Circle(double x,double y,double r):Point(x,y){
     radius = r;
@@ -15,4 +16,8 @@ Circle::Circle(double x,double y,double r):Point(x,y){
 
 double Circle::area(){
     return 3.14159 * radius * radius;
+}
+
+Circle::~Circle(){
+    std::cout << "Destructor in Circle" <<std::endl;
 }

@@ -7,6 +7,7 @@
 //
 
 #include "Point.hpp"
+#include <iostream>
 
 Point::Point(double i,double j){
     x = i;
@@ -16,3 +17,10 @@ Point::Point(double i,double j){
 double Point::area(){
     return 0;
 }
+
+Point::~Point(){
+    std::cout << "Destructor in Point" <<std::endl;
+}
+
+// 初始化静态变量
+int Point::bb = 10;

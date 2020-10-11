@@ -16,9 +16,13 @@ class Point{
     private :
         double x,y;
     public :
+        static int bb;
         Point(double i,double j);
         virtual double area();
+        virtual ~Point(); // 虚析构函数
     
 };
+// 编译报错
+//int Point::bb = 10;
 
 #endif /* Point_hpp */
