@@ -9,9 +9,9 @@
 #ifndef Point_hpp
 #define Point_hpp
 
-#include <stdio.h>
+#include "Base.hpp"
 
-class Point{
+class Point : public Base {
     
     private :
         double x,y;
@@ -19,7 +19,7 @@ class Point{
         static int bb;
         Point(double i,double j);
         virtual double area();
-        virtual ~Point(); // 虚析构函数
+        ~Point(); // 虚析构函数
     
 };
 // 编译报错
