@@ -10,17 +10,38 @@
 #include "polymorphism/Circle.hpp"
 #include "polymorphism/Point.hpp"
 #include "const_kw/ConstTest.cpp"
+#include "polymorphism/VirtualBase.cpp"
 
 using namespace std;
 void testConst();
 void testVirtualFunc();
 void testDestructor();
 void testDestructor2();
+void testMultiDerive();
 
 int main(int argc, const char * argv[]) {
-    testDestructor();
+    //testDestructor();
     //testDestructor2();
+    //testVirtualFunc();
+    testMultiDerive();
     return 0;
+}
+
+// 测试虚基类
+void testMultiDerive(){
+    DeriveAB obj(100,200,300);
+    cout<<" DeriveAB:a = "<<obj.a<<endl;
+    
+    cout<<" from DeriveA : a = "<<obj.DeriveA::GetA()<<endl;
+    
+    cout<<" from DeriveB : a = "<<obj.DeriveB::GetA()<<endl;
+    
+    /*
+     统一使用 VBase 的 int a
+     DeriveAB:a = 300
+     from DeriveA : a = 300
+     from DeriveB : a = 300
+     */
 }
 
 void testConst(){
@@ -35,7 +56,7 @@ void testConst(){
 
 void testVirtualFunc(){
     Point a(2,4);
-    Circle c(2,4, 3);
+    Circle c(2,4, 2);
     cout<<"point:"<<a.area()<<endl;
     cout<<"circle:"<<c.area()<<endl;
     

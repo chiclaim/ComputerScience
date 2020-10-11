@@ -19,7 +19,7 @@ class Point : public Base {
         static int bb;
         Point(double i,double j);
         virtual double area();
-        ~Point(); // 虚析构函数
+         ~Point(); // 虚析构函数
     
 };
 // 编译报错
