@@ -98,7 +98,6 @@ void yordan(){
         //寻找第i列中系数绝对值最大的一行
         //其与第i行交换，保证第i行第i列不为0（即保证主元系数不为0）；
         if(maxnum < EPS) {
-            cout<< "maxnum < EPS，i= " << i;
             flag = 1;
             break;
         }
@@ -120,24 +119,25 @@ void yordan(){
     }
     
     
-    // 化简后的有效方程组个数小于未知数个数，有多个解化简后的有效方程组个数小于未知数个数，有多个解。
+    // 化简后的有效方程组个数小于未知数个数，有多个解。
     int count = 0;
     for(int i = 1; i <= n; i++) {
         for(int j = 1; j <= n; j++) {
-            if(a[i][j]==0){
+            if(a[i][j]!=0){
                 count++;
             }
         }
     }
+    
     if(count != n){
-        cout << "此方程组多解" << endl;
-        exit(0);
+        cout << "此方程组多解！" << endl << endl;
+        return;
     }
     
     
     if(flag == 1) {
-        cout << "此方程组无解" << endl;
-        exit(0);
+        cout << "此方程组无解！" << endl << endl;
+        return;
     }
     
     //直接算出答案
