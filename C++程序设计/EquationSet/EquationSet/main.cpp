@@ -1,3 +1,24 @@
+
+/*
+
+作者：余志强
+
+案例方程组：
+8,2,1,2.5,1.5
+1,8,-0.5,2,-3
+1.5,2,8,-1,-4.5
+1,0.5,0.7,8,3.2
+
+无解方程组：
+1,1,2
+2,2,1
+
+多解方程组
+2,3,1,2
+1,-2,2,4
+3,1,3,6
+*/
+
 #include<cmath>
 #include<cstdio>
 #include<cstdlib>
@@ -17,6 +38,9 @@ double a[110][110], multi, ans[110], num;
 const double EPS = 1e-7;//精度处理
 
 char alphabet[26];
+
+
+
 
 void initAlphabet() {
     for (int i = 1; i <= 26; i++) {
