@@ -98,6 +98,10 @@ firstLoop:while(1){
                         break;
                     case 4:
                         inputNumbers(&x,&y);
+                        if(y == 0){
+                            cout<<"除数不能为0！"<<endl;
+                            break;
+                        }
                         cout << "计算结果：" << cal.divide(x, y) << endl << endl;
                         break;
                     case 5:
@@ -107,6 +111,10 @@ firstLoop:while(1){
                     case 6:
                         cout << "请输入第一个数:" << endl;
                         cin >> x;
+                        if(x<0){
+                            cout<<"不支持负数的平方根，请重新输入！"<<endl;
+                            break;
+                        }
                         cout << "计算结果：" << cal.mysqrt(x) << endl << endl;
                         break;
                     default:
